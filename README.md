@@ -25,15 +25,16 @@ All dependencies are free and open source.
 
 2. Replace the copy in `src/i18n/dictionaries/` and the colours in `src/app/globals.css`.
 3. Build the client's sections in `src/components/`. Anything another site could reuse belongs in `web-studio-kit` instead: add it there, tag a release, and bump the tag in `package.json`.
-4. Wrap every WebGL scene in `QualityGate` with a static fallback, and import the scene through `next/dynamic` with `ssr: false`, as `HeroScene.tsx` does.
-5. Deploy: import the repo as a new Vercel project. Set `NEXT_PUBLIC_SITE_URL` once the site has its own domain; until then metadata uses Vercel's production URL.
+4. Wrap every WebGL scene in `QualityGate` with a static fallback, and import the scene through `next/dynamic` with `ssr: false`, as `HeroScene.tsx` does. Render scenes in the kit's `SceneCanvas`. Above the fold, give the gate `idle` and keep the largest headline unsplit (`KineticText appear="ripple"`), or it becomes a late LCP.
+5. Keep server-only libraries out of client components: a client file that imports one constant from a module using zod (or any server library) ships the whole library to the browser.
+6. Deploy: import the repo as a new Vercel project. Set `NEXT_PUBLIC_SITE_URL` once the site has its own domain; until then metadata uses Vercel's production URL.
 
 ## Updating the kit
 
 The kit is pinned to a git tag:
 
 ```json
-"web-studio-kit": "github:aberratio/web-studio-kit#v0.1.0"
+"web-studio-kit": "github:aberratio/web-studio-kit#v0.2.2"
 ```
 
 To move to a newer release, change the tag and run `npm install`.
