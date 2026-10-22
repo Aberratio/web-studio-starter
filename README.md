@@ -10,7 +10,7 @@ Template for a new client website: Next.js (App Router) + TypeScript, with [`web
 - **Metadata**: per-language title and description, canonical URL and `hreflang` alternates.
 - **Tooling**: ESLint, Prettier, Vitest, and GitHub Actions running lint, format, typecheck, tests and build.
 
-All dependencies are free and open source.
+All dependencies are free. All are open source except GSAP (with ScrollTrigger and SplitText), which is free for commercial use under GSAP's own no-charge licence. No paid libraries.
 
 ## New client site
 
