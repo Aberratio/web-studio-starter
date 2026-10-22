@@ -1,8 +1,7 @@
 'use client'
 
-import { Canvas } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
-import { ShaderPlane } from 'web-studio-kit'
+import { SceneCanvas, ShaderPlane } from 'web-studio-kit'
 
 /** Full-screen shader behind the hero. `uScroll` goes from 0 to 1 over the first screen. */
 export default function HeroCanvas() {
@@ -18,9 +17,9 @@ export default function HeroCanvas() {
   }, [])
 
   return (
-    // A capped pixel ratio keeps a full-screen fragment shader affordable on dense screens.
-    <Canvas dpr={[1, 1.5]} gl={{ antialias: false, powerPreference: 'high-performance' }}>
+    // SceneCanvas: capped pixel ratio, no MSAA, and no rendering while off screen.
+    <SceneCanvas>
       <ShaderPlane scroll={scroll} />
-    </Canvas>
+    </SceneCanvas>
   )
 }
